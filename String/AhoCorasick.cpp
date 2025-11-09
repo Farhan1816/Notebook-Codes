@@ -53,7 +53,7 @@ struct AC {
     return u;
   }
 
-  vector<int>go(string &s)
+  vector<int>go(string &s) // count for each pattern the number of positions where it appears in s.
   {
     vector<int>ans(P);
     vector<int>tmpans(N);
