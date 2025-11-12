@@ -65,3 +65,40 @@ struct Dinic {
     return total;
   }
 };
+
+void solve()
+{
+    int n, m, k;
+    cin >> n >> m >> k;
+
+    int add = n;
+
+    Dinic dinic = Dinic(n+m+2);
+
+    int source = 0, sink = n+m+1;
+
+    vector<vector<int>>adj(n+1);
+
+    vector<vector<bool>>ase(n+1, vector<bool>(m+1));
+
+    for(int i=0;i<k;i++){
+        int x, y;
+        cin >> x >> y;
+        ase[x][y] = 1;
+        y+=n;
+        dinic.AddEdge(x, y, 1);
+        adj[x].push_back(y);
+    }
+
+    for(int i=1;i<=n;i++)dinic.AddEdge(0, i, 1);
+    for(int i=n+1;i<=n+m;i++)dinic.AddEdge(i, n+m+1, 1);
+
+    cout << dinic.MaxFlow(source, sink) << "\n";
+
+    for(int i=1;i<=n;i++){
+        for(auto id: dinic.g[i]){
+            auto &e = dinic.E[id];
+            if(e.v>n and e.v<=n+m and e.flow>0)cout << e.u << " " << e.v-n << "\n";
+        }
+    }
+}
