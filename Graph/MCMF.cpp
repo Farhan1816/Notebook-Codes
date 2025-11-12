@@ -1,3 +1,7 @@
+//Works for both directed, undirected and with negative cost too
+//doesn't work for negative cycles
+//for undirected edges just make the directed flag false
+//Complexity: O(min(E^2 *V log V, E logV * flow))
 struct edge {
   int v, rev_pos;
   ll cap, cost, flow = 0;
