@@ -41,6 +41,11 @@ vector<long long> multiply(vector<int> &a, vector<int> &b) {
   fft(z, 1);
   vector<long long> ret(sz);
   for(int i = 0; i < sz; ++i) ret[i] = (long long) round(z[i].a);
-  while((int)ret.size() > 1 && ret.back() == 0) ret.pop_back();
+  
+  int mxsz = n+m-1;
+  
+  while((int)ret.size()>mxsz)ret.pop_back();
+  while((int)ret.size()<mxsz)ret.push_back(0);
+
   return ret;
 }
