@@ -51,11 +51,9 @@ template<int M> vl convMod(const vl &a, const vl &b) {
 	}
 	return res;
 }
-
 vector<ll>find_all_sums(int st, int en, vector<vector<ll>>&v)
 {
   if(st==en)return v[st];
-  
   int mid = (st+en)/2;
   vector<ll>ans1 = find_all_sums(st, mid, v);
   vector<ll>ans2 = find_all_sums(mid+1, en, v);
