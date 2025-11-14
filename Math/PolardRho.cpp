@@ -1,4 +1,5 @@
 //Factorize a number very big.
+//Complexity = O(sqrt(n)*log(n))
 namespace PollardRho {
   mt19937 rnd(chrono::steady_clock::now().time_since_epoch().count());
   const int P = 1e6 + 9;
