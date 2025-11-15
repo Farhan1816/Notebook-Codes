@@ -41,3 +41,24 @@ struct CHT : public multiset<line> {
     return l.m * x + l.b;
   }
 };
+ 
+void solve()
+{
+  int n, c;
+  cin >> n >> c;
+
+  int h[n];
+  for(int i=0;i<n;i++)cin >> h[i];
+
+  int dp[n];
+  dp[0] = 0;
+  CHT cht;
+  cht.add(-(-2*h[0]), -(h[0]*h[0] + dp[0] + c));
+
+  for(int i=1;i<n;i++){
+    int val = -cht.query(h[i]);
+    dp[i] = val + h[i]*h[i];
+    cht.add(-(-2*h[i]), -(h[i]*h[i] + dp[i] + c));
+  }
+  cout << dp[n-1] << "\n";
+}
